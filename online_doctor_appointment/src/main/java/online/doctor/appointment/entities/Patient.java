@@ -1,12 +1,14 @@
 package online.doctor.appointment.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Patient {
 
+	@Id
 	private String email;
 	private String name;
 	private String password;
