@@ -28,13 +28,39 @@ public class AppointmentService{
 		return appointmentRep.findById(bookId).get();
 	};
 	
-	public List<Appointment> getAppointmentsByDocName(String docName){
-		return appointmentRep.findByDoctorName(docName);
+	public List<Appointment> getAppointmentsByDocName(String docName, String status){
+		return appointmentRep.findByDoctorName(docName, status);
 	};
 	
 	public List<Appointment> getAppointmentsByPatientName(String patientName){
 		return appointmentRep.findByPatientName(patientName);
 	}
 
-	
+	public String makePayment(int id) {
+		Appointment a = appointmentRep.findById(id).get();
+		a.setPayment("paid");
+		appointmentRep.save(a);
+		return "Payment Successful";
+	}
+
+	public String forwardAppointment(int id) {
+		Appointment a = appointmentRep.findById(id).get();
+		a.setStatus("requested");
+		appointmentRep.save(a);
+		return "Status is Set to requested";
+	}
+
+	public String respondAppointment(int id) {
+		Appointment a = appointmentRep.findById(id).get();
+		a.setStatus("responded");
+		appointmentRep.save(a);
+		return "Status is Set to responded";
+	}
+
+	public String treatAppointment(int id) {
+		Appointment a = appointmentRep.findById(id).get();
+		a.setStatus("treated");
+		appointmentRep.save(a);
+		return "Status is Set to treated";
+	}
 }

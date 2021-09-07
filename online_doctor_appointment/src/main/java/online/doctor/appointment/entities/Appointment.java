@@ -17,27 +17,55 @@ public class Appointment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-    private Long  bookId;
+    private int  bookId;
 	@Column
 	private String doctorName;
 	@Column
 	private String patientName;
 	@Column
-	private String paymentStatus;
+	private String payment;
+	@Column
+	(columnDefinition = "varchar(255) default 'unknown'")
+	private String status;
 	@Column
 	private String dateTime;
 	
-	
-	public Appointment() {}
-	
-	public Appointment(Long bookId, String doctorName, String patientName, String paymentStatus, String dateTime) {
+	public Appointment(int bookId, String doctorName, String patientName, String payment, String status,
+			String dateTime) {
 		super();
 		this.bookId = bookId;
 		this.doctorName = doctorName;
 		this.patientName = patientName;
-		this.paymentStatus = paymentStatus;
+		this.payment = payment;
+		this.status = status;
 		this.dateTime = dateTime;
 	}
+	
+	public String getPayment() {
+		return payment;
+	}
+
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+
+	public Appointment() {}
+	
+	
 	public String getDoctorName() {
 		return doctorName;
 	}
@@ -50,22 +78,17 @@ public class Appointment {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
-	public String getPaymentStatus() {
-		return paymentStatus;
-	}
-	public void setPaymentStatus(String paymentStatus) {
-		this.paymentStatus = paymentStatus;
-	}
+	
 	public String getDateTime() {
 		return dateTime;
 	}
 	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
-	public Long getBookId() {
+	public int getBookId() {
 		return bookId;
 	}
-	public void setBookId(Long bookId) {
+	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 	

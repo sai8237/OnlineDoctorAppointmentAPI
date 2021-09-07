@@ -38,7 +38,7 @@ public class AppointmentController {
 	
 	@GetMapping("/doctor/{name}")
 	public List<Appointment> getAppointmentsOfDocName(@PathVariable String name){
-		return appointmentServ.getAppointmentsByDocName(name);
+		return appointmentServ.getAppointmentsByDocName(name, "unknown");
 	}
 	
 	@GetMapping("/patient/{name}")
@@ -46,4 +46,23 @@ public class AppointmentController {
 		return appointmentServ.getAppointmentsByPatientName(name);
 	}
 	
+	@GetMapping("/payment/{id}")
+	public String makePayment(@PathVariable int id) {
+		return appointmentServ.makePayment(id);
+	}
+	
+	@GetMapping("/forwardAppointment/{id}")
+	public String forwardAppointment(@PathVariable int id) {
+		return appointmentServ.forwardAppointment(id);
+	}
+	
+	@GetMapping("/respondAppointment/{id}")
+	public String respondAppointment(@PathVariable int id) {
+		return appointmentServ.respondAppointment(id);
+	}
+	
+	@GetMapping("/treatAppointment/{id}")
+	public String treatAppointment(@PathVariable int id) {
+		return appointmentServ.treatAppointment(id);
+	}
 }

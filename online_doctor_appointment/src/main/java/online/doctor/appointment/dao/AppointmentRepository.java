@@ -11,8 +11,8 @@ import online.doctor.appointment.entities.Appointment;
 public interface AppointmentRepository extends JpaRepository<Appointment,Integer>{
 //public Appointment findByDoctorName();
 	
-	@Query("SELECT ap FROM bookings ap where ap.doctorName=?1")
-	public List<Appointment> findByDoctorName(String doctorName);
+	@Query("SELECT ap FROM bookings ap where ap.doctorName=?1 AND NOT ap.status=?2")
+	public List<Appointment> findByDoctorName(String doctorName, String status);
 	
 //public Appointment  findByPatientName();
 	
