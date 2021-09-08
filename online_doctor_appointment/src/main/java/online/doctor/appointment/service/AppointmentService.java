@@ -56,7 +56,9 @@ public class AppointmentService{
 		appointmentRep.save(a);
 		return "Status is Set to responded";
 	}
-
+	public List<Appointment> findAll() {
+		return appointmentRep.findAll();
+	}
 	public String treatAppointment(int id) {
 		Appointment a = appointmentRep.findById(id).get();
 		a.setStatus("treated");

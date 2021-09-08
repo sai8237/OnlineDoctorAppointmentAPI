@@ -30,7 +30,10 @@ public class AppointmentController {
 	public String addAppointment(@RequestBody Appointment appointment) {
 		return appointmentServ.addAppointment(appointment);
 	}
-	
+	@GetMapping("/all")
+	public List<Appointment> findAll(){
+		return appointmentServ.findAll();
+	}
 	@GetMapping("/{bookId}")
 	public Appointment getAppointment(@PathVariable int bookId) {
 		return appointmentServ.getAppointment(bookId);
